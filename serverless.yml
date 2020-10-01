@@ -2,7 +2,8 @@ service: sls-canary-example
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs12.x
+  region: ${opt:region, 'us-east-2'}
   iamRoleStatements:
     - Effect: Allow
       Action:
