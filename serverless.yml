@@ -18,6 +18,10 @@ plugins:
 custom:
   alerts:
     dashboards: true
+  deploymentSettings:
+    stages:
+      - dev
+      - prod
 
 functions:
   hello:
