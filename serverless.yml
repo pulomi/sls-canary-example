@@ -3,6 +3,7 @@ service: sls-canary-example
 provider:
   name: aws
   runtime: nodejs12.x
+  stahe: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-2'}
   iamRoleStatements:
     - Effect: Allow
@@ -63,7 +64,7 @@ functions:
       preTrafficHook: preHook
       postTrafficHook: postHook
       alarms:
-        - HelloFooAlarm
+        - HelloSnsFooAlarm
   preHook:
     handler: hooks.pre
   postHook:
