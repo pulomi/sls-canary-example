@@ -19,15 +19,35 @@ custom:
   alerts:
     dashboards: true
   deploymentSettings:
-    stages:
-      - dev
+    stages: # list of stages where you want to deploy your functions gradually
       - prod
 
 functions:
-  hello:
-    handler: handler.hello
+#  hello:
+#    handler: handler.hello
+#    events:
+#      - http: get hello
+#    alarms:
+#      - name: foo
+#        namespace: 'AWS/Lambda'
+#        metric: Errors
+#        threshold: 1
+#        statistic: Minimum
+#        period: 60
+#        evaluationPeriods: 1
+#        comparisonOperator: GreaterThanOrEqualToThreshold
+#    deploymentSettings:
+#      type: Linear10PercentEvery1Minute
+#      alias: Live
+#      preTrafficHook: preHook
+#      postTrafficHook: postHook
+#      alarms:
+#        - HelloFooAlarm
+
+  helloSns:
+    handler: handlerSns.hello
     events:
-      - http: get hello
+      - sns: newSnsTopic
     alarms:
       - name: foo
         namespace: 'AWS/Lambda'
